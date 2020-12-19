@@ -1,0 +1,25 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+        <h1>New To Do</h1>
+
+        <h2>{{ error }}</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create</button>
+        </form>
+
+    {% else %}
+
+        <p>
+            Send to login screen
+        </p>
+
+    {% endif %}
+
+{% endblock content %}

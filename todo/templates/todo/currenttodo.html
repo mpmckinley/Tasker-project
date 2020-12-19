@@ -1,0 +1,36 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+    <p>
+        Your current TO-DOs
+    </p>
+
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Memo</th>
+            <th>Due Date</th>
+        </tr>
+        {% for todo in todos %}
+            <tr>
+                <td>
+                    {% comment %} link to the specific item "todo.id" gets the id {% endcomment %}
+                    <a href="{% url 'viewtodo' todo.id %}">
+                        {% if todo.important %}<strong>{% endif %}
+                            {{ todo.title }}
+                        {% if todo.important %}</strong>{% endif %}
+                    </a>
+                </td>
+                <td>{{ todo.memo }}</td>
+                {% if todo.duedate is not None %}
+                    <td>{{ todo.duedate }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+
+<br>
+<a href="{% url 'completedtodo' %}">Completed</a>
+
+{% endblock content %}

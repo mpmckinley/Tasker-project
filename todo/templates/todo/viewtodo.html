@@ -7,22 +7,32 @@
 
     {{ error }}
 
-    <br>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit">Update</button>
+    <div class="row">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                {{ form|crispy }}
+            </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
     </form>
-
-    <form method="POST" action="{% url 'completetodo' todo.id %}">
-        {% csrf_token %}
-        <button type="submit">Complete</button>
-    </form>
+        <div class="col">
+            <form method="POST" action="{% url 'completetodo' todo.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success">Complete</button>
+            </form>
+        </div>
+        <div class="col">
+            <form method="POST" action="{% url 'deletetodo' todo.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
     
-    <form method="POST" action="{% url 'deletetodo' todo.id %}">
-        {% csrf_token %}
-        <button type="submit">Delete</button>
-    </form>
 </div>
 
 {% endblock content %}

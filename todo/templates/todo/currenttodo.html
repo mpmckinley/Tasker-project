@@ -1,22 +1,27 @@
 {% extends 'todo/base.html' %}
+{% load static %}
 
 {% block content %}
 
     <div class="container">    
         <table class="table">
             <thead>
+                <th></th>
                 <th>Item</th>
                 <th>Memo</th>
                 <th>Due Date</th>
             </thead>
             {% for todo in todos %}
                 <tr>
+                    <td align="center">
+                        {% if todo.important %}
+                            <i class="bi bi-chevron-double-right" style="color: rgb(228, 48, 3);"></i>
+                        {% endif %}
+                    </td>
                     <td>
                         {% comment %} link to the specific item "todo.id" gets the id {% endcomment %}
                         <a href="{% url 'viewtodo' todo.id %}">
-                            {% if todo.important %}<strong>{% endif %}
                                 {{ todo.title }}
-                            {% if todo.important %}</strong>{% endif %}
                         </a>
                     </td>
                     <td>{{ todo.memo }}</td>

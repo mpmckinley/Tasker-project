@@ -1,3 +1,8 @@
+.navbar_custom{
+    font-family: 'Bungee', cursive;
+    font-size: 1.5em;
+}
+
 .container {
     margin-top: 25px;
 }

@@ -1,24 +1,27 @@
 {% extends 'todo/base.html' %}
+{% load static %}
 
 {% block content %}
 
-    {% if user.is_authenticated %}
+    <div class="container">
+        {% if user.is_authenticated %}
 
-        <p>
-            You're already logged in - logout above
-        </p>
+            <p>
+                You're already logged in - logout above
+            </p>
 
-    {% else %}
+        {% else %}
 
-        <h1>Sign Up</h1>
+            <h1>Sign Up</h1>
 
-        <h2>{{ error }}</h2>
+            <h2>{{ error }}</h2>
 
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Sign Up</button>
-        </form>
-    {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Sign Up</button>
+            </form>
+        {% endif %}
+    </div>
 
 {% endblock content %}

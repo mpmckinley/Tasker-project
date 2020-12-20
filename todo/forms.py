@@ -1,7 +1,7 @@
+from django import forms
 from django.utils.translation import gettext_lazy as _
 from django.forms import ModelForm, widgets
 from .models import Todo
-
 class TodoForm(ModelForm):
     class Meta:
         model = Todo
@@ -18,4 +18,21 @@ class TodoForm(ModelForm):
             },
         }
         widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'placeholder': 'Task'
+                 }),
+            'memo': forms.Textarea(attrs={
+                'class': 'form-control form-control-lg',
+                'placeholder': 'Description',
+                'rows': 4
+                 }),
+            'important': forms.Select(attrs={
+                'class': 'form-control form-control-lg',
+                'default':'None'
+                }),
+            'duedate': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'placeholder': 'Due Date'
+                }),
         }

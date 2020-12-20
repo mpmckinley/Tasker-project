@@ -1,37 +1,65 @@
 {% extends 'todo/base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 
 <div class="container">
-
     {{ error }}
 
-    <div class="row">
-        <form method="POST">
-            {% csrf_token %}
-            <div class="row">
-                {{ form|crispy }}
+    <form method="POST">
+    {% csrf_token %}
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-8 mb-2">
+                {{ form.title }}
             </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <button type="submit" class="btn btn-primary">Update</button>
         </div>
-    </form>
-        <div class="col">
-            <form method="POST" action="{% url 'completetodo' todo.id %}">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-success">Complete</button>
-            </form>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-8 mb-2">
+                {{ form.memo }}
+            </div>
         </div>
-        <div class="col">
-            <form method="POST" action="{% url 'deletetodo' todo.id %}">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-4 mb-2">
+                {{ form.important }}
+            </div>
+            <div class="col-md-4 mb-2">
+                {{ form.duedate }}
+            </div>
+        </div>  
+        <div class="row align-items-center justify-content-center">
+            <div class="col-8">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block btn_full">
+                            <svg class="bi" fill="currentColor">
+                                <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#check-circle-fill"/>
+                            </svg>
+                        </button>
+                    </div>
+        </form>
+                    <div class="col">
+                        <form method="POST" action="{% url 'completetodo' todo.id %}">
+                        {% csrf_token %}
+                            <button type="submit" class="btn btn-success btn-lg btn-block btn_full">
+                                <svg class="bi" fill="currentColor">
+                                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#bullseye"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <form method="POST" action="{% url 'deletetodo' todo.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-lg btn-block btn_full">
+                                <svg class="bi" fill="currentColor">
+                                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#x-circle-fill"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
     
 </div>
 

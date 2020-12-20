@@ -13,18 +13,23 @@
             </thead>
             {% for todo in todos %}
                 <tr>
-                    <td align="center">
-                        {% if todo.important %}
-                            <i class="bi bi-chevron-double-right" style="color: rgb(228, 48, 3);"></i>
-                        {% endif %}
-                    </td>
+                    <td class="icon">
+                        {% if todo.important == 'High' %}
+                        <i class="bi bi-chevron-double-up" style="color: rgba(245,6,6,1);"></i>
+                            {% elif todo.important == 'Medium' %}
+                            <i class="bi bi-chevron-double-right" style="color: rgba(241,210,33,1);"></i>
+                                {% elif todo.important == 'Low' %}
+                                <i class="bi bi-chevron-double-down" style="color: rgba(73,238,73,1);"></i>
+                                {% else %}
+                                <i class="bi bi-box" style="color: rgba(123,126,123,1);"></i>
+                        {% endif %}                    </td>
                     <td>
                         {% comment %} link to the specific item "todo.id" gets the id {% endcomment %}
                         <a href="{% url 'viewtodo' todo.id %}">
                                 {{ todo.title }}
                         </a>
                     </td>
-                    <td>{{ todo.memo }}</td>
+                    <td class="memo">{{ todo.memo }}</td>
                     <td>
                         {% if todo.duedate is not None %}
                             {{ todo.duedate }}

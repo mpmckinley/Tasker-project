@@ -1,36 +1,60 @@
 {% extends 'todo/base.html' %}
-{% load crispy_forms_tags %}
-
-<script>
-    $(function() {
-    $( "#date_ex" ).datepicker();
-    });
-</script>
+{% load static %}
 
 {% block content %}
 
     <div class="container">
         {% if user.is_authenticated %}
-            {{ error }}
-
-            <form method="POST">
-                {% csrf_token %}
-                <div class="row">
-                    {{ form.title|as_crispy_field }}
+        {{ error }}
+        <form method="POST">
+        {% csrf_token %}
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-8 mb-2">
+                    {{ form.title }}
                 </div>
-                <div class="row">
-                    {{ form.memo|as_crispy_field }}
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-8 mb-2">
+                    {{ form.memo }}
                 </div>
-                <div class="row">
-                    <div class="col">
-                        {{ form.important|as_crispy_field}}
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-4 mb-2">
+                    {{ form.important }}
+                </div>
+                <div class="col-md-4 mb-2">
+                    {{ form.duedate }}
+                </div>
+            </div>  
+            <div class="row align-items-center justify-content-center">
+                <div class="col-8">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block btn_full">
+                                <svg class="bi" fill="currentColor">
+                                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#check-circle-fill"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-success btn-lg btn-block btn_full" disabled>
+                                <svg class="bi" fill="currentColor">
+                                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#bullseye"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-danger btn-lg btn-block btn_full" disabled>
+                                <svg class="bi" fill="currentColor">
+                                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#x-circle-fill"/>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                    <div class="col">
-                        {{ form.duedate|as_crispy_field}}
-                    </div>
                 </div>
-                <button type="submit" class="btn btn-success"><i class="bi bi-check-circle-fill"></i> Create</button>
-            </form>
+            </div>
+        </form>
+    </div>
 
         {% else %}
 

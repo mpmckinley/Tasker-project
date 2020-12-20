@@ -3,8 +3,16 @@
     font-size: 1.5em;
 }
 
+body{
+    zoom: 1.25; 
+    -moz-transform: scale(1.25); 
+    -moz-transform-origin: 0 0;
+}
+
 .container {
     margin-top: 25px;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 .btn_full{
@@ -17,7 +25,7 @@
 }
 
 table td.icon{
-    width: 30px;
+    width: 2em;
     text-align: center;
 }
 
@@ -26,5 +34,5 @@ table td.icon{
 } */
 
 .btn-margin-left {
-    margin-left: 5px;
+    margin-left: .25em;
 }

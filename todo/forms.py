@@ -1,7 +1,9 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from django.forms import ModelForm, widgets
+from django.forms import ModelForm, fields, widgets
 from .models import Todo
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 class TodoForm(ModelForm):
     class Meta:
         model = Todo
@@ -24,7 +26,7 @@ class TodoForm(ModelForm):
                  }),
             'memo': forms.Textarea(attrs={
                 'class': 'form-control form-control-lg',
-                'placeholder': 'Description',
+                'placeholder': 'Details',
                 'rows': 4
                  }),
             'important': forms.Select(attrs={
@@ -35,4 +37,29 @@ class TodoForm(ModelForm):
                 'class': 'form-control form-control-lg',
                 'placeholder': 'Due Date'
                 }),
+        }
+
+class RegisterForm(UserCreationForm):
+
+    class Meta:
+        model = User
+        fields = ["username", "password"]
+        labels = {
+
+        }
+        help_texts = {
+
+        }
+        error_messages = {
+
+        }
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'class': 'form-control form-control-lg',
+                'placeholder': 'Username'
+                 }),
+            'password': forms.TextInput(attrs={ 
+                'type': 'password',
+                'class': 'form-control form-control-lg','placeholder': 'Password'
+                 }),
         }

@@ -1,4 +1,5 @@
 from django.contrib import auth
+from django.db.models.deletion import SET_NULL
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -104,6 +105,14 @@ def deletetodo(request, todo_pk):
     todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
     if request.method == 'POST':
         todo.delete()
+        return redirect('currenttodo')
+
+@login_required
+def reboottodo(request, todo_pk):
+    todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
+    if request.method == 'POST':
+        todo.datecompleted=None
+        todo.save()
         return redirect('currenttodo')
 
 @login_required

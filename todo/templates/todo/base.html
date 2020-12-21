@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=2.0">
         <title>Tasker</title>
+        <link rel="shortcut icon" type="ico" href="{% static 'todo/favicon.ico' %}"/>
         <!-- **This needs to be an icon -->
         <link rel="icon" type="image/svg" href="{% static 'todo/icons/bi-list-task.svg' %}">
         <!-- CSS and stuff -->
@@ -28,29 +29,41 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'createtodo' %}">Make</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="{% url 'currenttodo' %}">Do</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="{% url 'completedtodo' %}">Done</a>
-                    </li>
-                    <li class="nav-item dropdown">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'createtodo' %}">
+                        <svg class="bi" fill="currentColor">
+                            <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#plus-square"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'currenttodo' %}">
+                        <svg class="bi" fill="currentColor">
+                            <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#list"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'completedtodo' %}">
+                        <svg class="bi" fill="currentColor">
+                            <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#list-check"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Dropdown
                     </a>
-                {% endif %}
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
                 </li>
+                {% endif %}
                 <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
             </ul>
             <div class="d-flex">

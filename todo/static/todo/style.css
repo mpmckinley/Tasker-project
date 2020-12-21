@@ -24,6 +24,17 @@ body{
     height: 1.5em;
 }
 
+.bi_btn{
+    width: 1em;
+    height: 1em;
+}
+
+.hidebtn {
+    background: none;
+    padding: 0px;
+    border: none;
+  }
+
 table td.icon{
     width: 2em;
     text-align: center;

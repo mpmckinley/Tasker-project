@@ -10,6 +10,7 @@
                 <th>Detail</th>
                 <th>Due</th>
                 <th>Done</th>
+                <th></th>
             </thead>
             {% for todo in todos %}
                 <tr>
@@ -33,6 +34,14 @@
                     <td>{{ todo.memo }}</td>
                     <td>{{ todo.duedate|date:'m.j.y H:i' }}</td>
                     <td>{{ todo.datecompleted|date:'m.j.y H:i' }}</td>
+                    <td class="icon">
+                        <form method="POST" action="{% url 'reboottodo' todo.id %}">
+                        {% csrf_token %}
+                            <button type="submit" class="hidebtn">
+                                <i class="bi bi-arrow-repeat"></i>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </table>

@@ -38,6 +38,7 @@
                     </div>
         </form>
                     <div class="col">
+                    {% if todo.datecompleted == None %}
                         <form method="POST" action="{% url 'completetodo' todo.id %}">
                         {% csrf_token %}
                             <button type="submit" class="btn btn-success btn-lg btn-block btn_full">
@@ -46,6 +47,17 @@
                                 </svg>
                             </button>
                         </form>
+                    {% else %}
+                        <form method="POST" action="{% url 'reboottodo' todo.id %}">
+                        {% csrf_token %}
+                            <button type="submit" class="btn btn-success btn-lg btn-block btn_full">
+                                <svg class="bi" fill="currentColor">
+                                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#arrow-counterclockwise"/>
+                                </svg>
+                            </button>
+                        </form>
+
+                    {% endif %}
                     </div>
                     <div class="col">
                         <form method="POST" action="{% url 'deletetodo' todo.id %}">

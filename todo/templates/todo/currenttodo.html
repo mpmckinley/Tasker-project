@@ -10,6 +10,8 @@
                 <th>Task</th>
                 <th>Detail</th>
                 <th>Due</th>
+                <th></th>
+                <th></th>
             </thead>
             {% for todo in todos %}
                 <tr>
@@ -34,6 +36,26 @@
                         {% if todo.duedate is not None %}
                             {{ todo.duedate }}
                         {% endif %}
+                    </td>
+                    <td class="icon">
+                        <form method="POST" action="{% url 'completetodo' todo.id %}">
+                        {% csrf_token %}
+                            <button type="submit" class="hidebtn">
+                                <svg class="bi" fill="currentColor">
+                                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#bullseye"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </td>
+                    <td class="icon">
+                        <form method="POST" action="{% url 'deletetodo' todo.id %}">
+                        {% csrf_token %}
+                            <button type="submit" class="hidebtn">
+                                <svg class="bi text-danger" fill="currentColor">
+                                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#x-circle-fill"/>
+                                </svg>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             {% endfor %}

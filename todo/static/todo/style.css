@@ -24,6 +24,17 @@ body{
     height: 1.5em;
 }
 
+.bi.home{
+    width: 5em;
+    height: 5em;
+    margin-bottom: 1em;
+}
+
+.home_txt{
+    margin-bottom: 1em;
+    font-family: 'Spartan', sans-serif;
+}
+
 .bi_btn{
     width: 1em;
     height: 1em;

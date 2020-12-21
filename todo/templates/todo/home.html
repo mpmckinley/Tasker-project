@@ -1,11 +1,51 @@
 {% extends 'todo/base.html'%}
+{% load static %}
 
 {% block content %}
 
+<div class="jumbotron d-flex align-items-center min-vh-100">
     <div class="container">
-        We're making task tracking, and completion, easy
-
-        From a second computer, that is!
+        <div class="row justify-content-center align-items-center">
+            <div class="col-1 mb-20">
+                <svg class="bi home" fill="currentColor">
+                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#plus-square"/>
+                </svg>
+            </div>
+            <div class="col-3 align-self-center myauto home_txt">
+                <strong>Add</strong> any task
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-1">
+                <svg class="bi home" fill="currentColor">
+                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#check-circle-fill"/>
+                </svg>
+            </div>
+            <div class="col-3 align-self-center home_txt">
+                <strong>Update</strong> notes, dates, and importance
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-1">
+                <svg class="bi home" fill="currentColor">
+                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#bullseye"/>
+                </svg>
+            </div>
+            <div class="col-3 align-self-center home_txt">
+                <strong>Complete</strong> a task to mark it off the list
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-1">
+                <svg class="bi home" fill="currentColor">
+                    <use xlink:href="{% static 'todo/icons/bootstrap-icons.svg' %}#x-circle-fill"/>
+                </svg>
+            </div>
+            <div class="col-3 align-self-center home_txt">
+                <strong>Delete</strong> task when and if you need
+            </div>
+        </div>
     </div>
+</div>
 
 {% endblock content %}

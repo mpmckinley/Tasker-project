@@ -18,10 +18,12 @@
                     <td class="icon">
                         {% if todo.important == 'High' %}
                         <i class="bi bi-chevron-double-up" style="color: rgba(245,6,6,1);"></i>
+                            {% comment %} <!-- Please refer: https://github.com/shubhamjain/svg-loader -->
+                            <svg data-src="https://s.svgbox.net/loaders.svg?ic=rings" width="32" height="32" stroke="rgba(245,6,6,1)"></svg> {% endcomment %}
                             {% elif todo.important == 'Medium' %}
                             <i class="bi bi-chevron-double-right" style="color: rgba(241,210,33,1);"></i>
                                 {% elif todo.important == 'Low' %}
-                                <i class="bi bi-chevron-double-down" style="color: rgba(73,238,73,1);"></i>
+                                <i class="bi bi-chevron-double-down" style="color: rgba(18,193,25,1);"></i>
                                 {% else %}
                                 <i class="bi bi-box" style="color: rgba(123,126,123,1);"></i>
                         {% endif %}                    </td>
